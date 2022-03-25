@@ -11,9 +11,9 @@ def main(query):
     # print(crawlerout)
     NLPout= NLP.main(crawlerout)
     #print(NLPout)
-    # Clusteringout=NLP.main(NLPout)
+    Clusteringout=Clustering.main(NLPout)
 
-    # print(Clusteringout)
+    #print(Clusteringout)
  
 # need to write the steming algo tooooo
 

@@ -56,7 +56,7 @@ def main(indata):
 
 def load_data(directory):
     files = dict()
-    print(directory)
+    # print(directory)
     for filename in directory:
         
 
