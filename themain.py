@@ -7,11 +7,11 @@ import sys
 def main(query):
     # text1 =os.system("python crawler.py https://en.wikipedia.org/wiki/Fruit")
     crawlerout= crawlerfinal.main(query)
-    # text=
+   
     # print(crawlerout)
     NLPout= NLP.main(crawlerout)
     #print(NLPout)
-    Clusteringout=NLP.main(NLPout)
+    # Clusteringout=NLP.main(NLPout)
 
     # print(Clusteringout)
  

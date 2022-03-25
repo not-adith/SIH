@@ -61,7 +61,7 @@ def load_data(directory):
         
 
         # Extract words
-        print(directory[filename])
+        
         contents = [
             word.lower() for word in
             nltk.word_tokenize(directory[filename]) #[filename]
