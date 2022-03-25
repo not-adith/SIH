@@ -12,14 +12,27 @@ import gensim.downloader as api, inspect
 from gensim.models.word2vec import Word2Vec
 
 
-print("jai shree ramm")
+import test
+
+def dicttoclass(imported_data):
+    print("jai shree ram")
+    func_return = []
+    for web in imported_data:
+        web1=webpage()
+        for i in range(0,4):
+            web1.catlist.append(category(cat=imported_data[web][i][0],tfidf=imported_data[web][i][1]))
+        
+        func_return.append(web1)
+
+
+
 
 #There should be 12 categories
-CATEGORIES=("Crime","Curruption","Gang-war","Cyber warfare")
+CATEGORIES=('Science','Technology','Political', 'Sports', 'Entertianment', 'International', 'Environmental', 'Business','Historical', 'Hateful','Misleading','Harmful')
 CAT_VECTOR={}
 class category:
     def __init__(self,cat,tfidf):
-        self.cat= cat
+        self.cat=cat
         self.tfidf= tfidf
         self.vector=[]
         self.distance=0.0000
@@ -29,39 +42,34 @@ class category:
 
     
 class webpage:
-    def __init__(self,cat1,cat2,cat3,cat4,cat5):
-        self.cat1 =cat1
-        self.cat2 =cat2
-        self.cat3 =cat3
-        self.cat4 =cat4
-        self.cat5 =cat5
+    def __init__(self):
+        self.catlist=[4]
+        
 
 
 
-def import_data():
-    # TODO import data function and arranging in dict
-    print("jai shree ram")
-    return dict
+
+
 #def assign_vector():
     
 # def find_distance(category):
 #     category.cat
 #     vectoring_model.wv.distance
 
-def inverse_distance():
-
-    print("jai shree ramm")
 
 
-
-def main():
-    imported_data= import_data(sys.argv[1])
+def main(imported_data):
+    print(imported_data)
+    #input data  to class conversion 
+    imported_data= dicttoclass(imported_data)
+    print(imported_data)
 
     # TODO import word to vector model
     # this code needs to change afterwards
+
     corpus = api.load('text8')
     vectoring_model = Word2Vec(corpus)
-
+    
     #asigning vector to categories
     for words in CATEGORIES:
         CAT_VECTOR[words]=vectoring_model.wv[words]
@@ -76,7 +84,7 @@ def main():
     
 
     # clustering algo
-
+    
     # TODO CLustering algo
 
 
@@ -109,7 +117,7 @@ def main():
     
 
     out={}
-    for webpage in import_data:
+    for webpage in imported_data:
         cat_and_percert=[]
         for category in webpage:
             cat_and_percert.append((category.assignedCAT,category.percentage))
@@ -117,3 +125,8 @@ def main():
 
     return out 
     #out to be retruned
+
+if __name__ == "__main__":
+    
+    main(test.data)
+    
