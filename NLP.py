@@ -4,7 +4,7 @@
 import math
 import nltk
 import os
-import sys
+import sys,string
 
 
 def main(indata):
@@ -45,7 +45,7 @@ def main(indata):
     # Print results
     outdict={}
     for filename in corpus:
-        print(filename)
+        
         outlist = []
         for term, score in tfidfs[filename]:
             #print(f"    {term}: {score:.4f}")
@@ -56,15 +56,19 @@ def main(indata):
 
 def load_data(directory):
     files = dict()
+    print(directory)
     for filename in directory:
         
 
         # Extract words
+        print(directory[filename])
         contents = [
             word.lower() for word in
-            nltk.word_tokenize(directory[filename])
+            nltk.word_tokenize(directory[filename]) #[filename]
             if word.isalpha()
         ]
+
+        
 
         # Count frequencies
         frequencies = dict()

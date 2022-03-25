@@ -28,18 +28,14 @@ def main(query):
 		r = requests.get(j)
 		soup = BeautifulSoup(r.content, 'html.parser')
 		sttr=soup.get_text()
-		sttr=sttr.replace('\n', ' ')
-  		sttr.replace('@', ' ')
-  		sttr.replace('#', ' ')
-  		sttr.replace('%', ' ')
-  		sttr.replace('&', ' ')
-  		sttr.replace('^', ' ')
-  		sttr.replace('*', ' ')
-  		sttr.replace('1', ' ')
-  		sttr.replace('2', ' ')
-  		print(sttr.replace('9', ' '))
+		sttr.replace('\n', ' ')
+		sttr.replace('@', ' ')
+		sttr.replace('#', ' ')
+		sttr.replace('%', ' ')
+		sttr.replace('&', ' ')
+		sttr.replace('9', ' ')  	
 		out[j]= sttr
-		#print(j)
+	
 	return out	
 
 if __name__ == "__main__":
