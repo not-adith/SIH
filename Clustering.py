@@ -18,6 +18,7 @@ def dicttoclass(imported_data):
     func_return = []
     for web in imported_data:
         web1=webpage()
+        web1.name=web
         for i in range(0,4):
             web1.catlist.append(category(cat=imported_data[web][i][0],tfidf=imported_data[web][i][1]))
         
@@ -73,10 +74,10 @@ def main(imported_data):
         CAT_VECTOR[words]=wv[words]
 
     #assigning vector to data
-    
+    print("out at vectorisation step")
     for webpage in imported_data:
-        print("out at vectorisation step")
-        print(webpage.catlist)
+       
+        
         for _ in range(len(webpage.catlist)-1):
             if webpage.catlist[_].cat in wv:
                 webpage.catlist[_].vector= wv[webpage.catlist[_].cat]
@@ -127,14 +128,10 @@ def main(imported_data):
         cat_and_percert=[]
         for categories in webpage.catlist:
             cat_and_percert.append((categories.assignedCAT,categories.percentage))
-        out[webpage]=cat_and_percert
+        out[webpage.name]=cat_and_percert
     
     return out 
     #out to be retruned
-
-if __name__ == "__main__":
-    
-    main(test.data)
 
 
 
