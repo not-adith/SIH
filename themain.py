@@ -10,12 +10,13 @@ def main(query):
    
     # print(crawlerout)
     NLPout= NLP.main(crawlerout)
-    #print(NLPout)
+    print("NLPout came out /n")
+    print(NLPout)
     Clusteringout=Clustering.main(NLPout)
 
-    #print(Clusteringout)
- 
-# need to write the steming algo tooooo
+    print(Clusteringout)
+    return Clusteringout
+
 
 
 

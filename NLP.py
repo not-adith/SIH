@@ -5,7 +5,7 @@ import math
 import nltk
 import os
 import sys,string
-
+from nltk.stem import WordNetLemmatizer
 
 def main(indata):
     """Calculate top TF-IDF for a corpus of documents."""
@@ -48,7 +48,7 @@ def main(indata):
         
         outlist = []
         for term, score in tfidfs[filename]:
-            #print(f"    {term}: {score:.4f}")
+            
             outlist.append((term,score))
         outdict[filename]= outlist
     return outdict
@@ -56,7 +56,8 @@ def main(indata):
 
 def load_data(directory):
     files = dict()
-    # print(directory)
+    wordnet_lemmatizer = WordNetLemmatizer()
+    nltk.download('wordnet')
     for filename in directory:
         
 
@@ -67,6 +68,9 @@ def load_data(directory):
             nltk.word_tokenize(directory[filename]) #[filename]
             if word.isalpha()
         ]
+        
+        for word in contents:
+            wordnet_lemmatizer.lemmatize(word)
 
         
 
