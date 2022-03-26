@@ -6,6 +6,7 @@ import nltk
 import os
 import sys,string
 from nltk.stem import WordNetLemmatizer
+# import gensim.downloader as api
 
 def main(indata):
     """Calculate top TF-IDF for a corpus of documents."""
@@ -22,6 +23,7 @@ def main(indata):
     # Calculate IDFs
     print("Calculating inverse document frequencies...")
     idfs = dict()
+
     for word in words:
         f = sum(word in corpus[filename] for filename in corpus)
         idf = math.log(len(corpus) / f)
@@ -57,6 +59,7 @@ def main(indata):
 def load_data(directory):
     files = dict()
     wordnet_lemmatizer = WordNetLemmatizer()
+    # wv = api.load('word2vec-google-news-300')
     nltk.download('wordnet')
     for filename in directory:
         
@@ -68,11 +71,15 @@ def load_data(directory):
             nltk.word_tokenize(directory[filename]) #[filename]
             if word.isalpha()
         ]
-        
+        # wv = api.load('word2vec-google-news-300')
+        # print(contents[:50])
+        contents= [x for x in contents if x not in string.punctuation and x not in nltk.corpus.stopwords.words("english")]
         for word in contents:
-            wordnet_lemmatizer.lemmatize(word)
-
-        
+            word = wordnet_lemmatizer.lemmatize(word)
+        # for word in contents:
+        #     if word not in wv:
+        #         contents.remove(word)
+        # print(contents[:50])
 
         # Count frequencies
         frequencies = dict()

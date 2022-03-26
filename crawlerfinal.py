@@ -1,7 +1,7 @@
 
 import requests
 from bs4 import BeautifulSoup
-
+import re
 import sys
 import requests
 from bs4 import BeautifulSoup
@@ -28,12 +28,14 @@ def main(query):
 		r = requests.get(j)
 		soup = BeautifulSoup(r.content, 'html.parser')
 		sttr=soup.get_text()
-		sttr.replace('\n', ' ')
+		sttr.replace('\t',' ')
+		sttr.replace('\n', '')
 		sttr.replace('@', ' ')
 		sttr.replace('#', ' ')
 		sttr.replace('%', ' ')
 		sttr.replace('&', ' ')
-		sttr.replace('9', ' ')  	
+		sttr.replace('9', ' ') 
+		 	
 		out[j]= sttr
 	
 	return out	

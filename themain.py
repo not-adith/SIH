@@ -8,13 +8,13 @@ def main(query):
     # text1 =os.system("python crawler.py https://en.wikipedia.org/wiki/Fruit")
     crawlerout= crawlerfinal.main(query)
    
-    # print(crawlerout)
+    print(crawlerout)
     NLPout= NLP.main(crawlerout)
     print(NLPout)
     Clusteringout=Clustering.main(NLPout)
 
-    # print(Clusteringout)
-    # return Clusteringout
+    print(Clusteringout)
+    return Clusteringout
 
 
 
